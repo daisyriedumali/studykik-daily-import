@@ -1,0 +1,82 @@
+.articles-holder div .post a {
+	border-radius: 5px;
+    border: solid 1px #cccccc;
+}
+
+.articles-holder div .post a .img-holder {
+	border: none;
+	height: 160px;
+}
+
+.img-circle-btn {
+	margin-top: -45px;
+    position: absolute;
+    left: calc(50% - 30px);
+}
+
+.img-circle-btn img {
+	width: 60px;
+    border-radius: 80px;
+    border: white solid 5px;
+}
+
+.info.no-distance, .info.coming-soon-landing {
+	margin-top: 24px;	
+}
+
+.info.no-distance h4, .info.coming-soon-landing h4 {
+	margin-bottom: 5px;
+}
+
+.info.no-distance address, .info.coming-soon-landing span {
+	margin: 0 !important;
+    font-size: 14px;
+}
+.info.coming-soon-landing span {
+	height: 30px;
+}
+
+.info.no-distance address i {
+	top: 3px;	
+}
+
+.post .desc .custom-description * {
+	font-size: 14px!important;
+    line-height: 20px!important;
+}
+
+
+@media screen and (max-width: 500px) {
+	.articles-holder .post {
+	    width: 100% !important;
+	}
+}
+
+var imgCircleBtn = document.createElement("div");
+imgCircleBtn.classList.add("img-circle-btn");
+imgCircleBtn.innerHTML='<img src="https://res.cloudinary.com/teembr/image/upload/v1575470386/studykik/circle2.png"/>';
+
+var imgHolder = document.querySelectorAll('.articles-holder div .post a .img-holder');
+
+for(var i=0; i<imgHolder.length; i++){
+  var temp = imgCircleBtn.cloneNode(true);
+  imgHolder[i].insertAdjacentElement('afterend', temp);
+}
+
+document.querySelectorAll('.post .btn-holder').forEach(function(e){
+	e.remove();
+})
+
+document.querySelectorAll('.info.no-distance span').forEach(function(e){
+	e.remove();
+})
+
+<div class="img-circle-btn">
+<img src="https://res.cloudinary.com/teembr/image/upload/v1575470386/studykik/circle2.png"/>
+</div>
+
+
+for(var i=0; i<callNumberSpan.length; i++){
+	callNumberSpan[i].remove();
+}
+.remove()

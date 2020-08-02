@@ -1,0 +1,62 @@
+document.querySelector('.form-study.landing-form > h2').remove();
+document.querySelector('.form-study.landing-form > h1').remove();
+var signupForm = document.querySelector('.form-study.landing-form');
+
+document.querySelector('.abtasty-modal__content').appendChild(signupForm);
+
+let modalDiv = document.createElement("div");
+modalDiv.setAttribute('class', 'modal fade');
+modalDiv.setAttribute('id', 'myModal');
+modalDiv.setAttribute('role', 'dialog');
+
+modalDiv.innerHTML = '<div class="modal-dialog"><div class="modal-content"><div class="modal-header"><button type="button" class="close" data-dismiss="modal">&times;</button></div><div class="modal-body"></div><div class="modal-footer"></div></div></div>';
+
+modalDiv.querySelector('.modal-body').appendChild(signupForm);
+
+
+
+
+var articleSection = document.querySelector('article.landing');
+let stickyBtn = document.createElement("div");
+stickyBtn.setAttribute('class', 'sticky-sign-btn');
+stickyBtn.innerHTML = '<div class="field-row fixed-height"><div class="btn">Sign up now!</div>';
+articleSection.insertAdjacentElement('beforebegin', stickyBtn);
+
+
+
+<style>
+.abtasty-modal.abtasty-modal--simple {
+	z-index: 2147483647 !important;
+}
+
+form.form-study {
+	margin-top: 20px;
+    margin-bottom: 0;
+}
+
+.sticky-sign-btn {
+	position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    z-index: 2147484646 !important;
+}
+
+.sticky-sign-btn div.btn {
+	width: 100%;
+	color: #fff;
+    font-size: 2.5rem;
+    line-height: 50px;
+    padding: 0 10px;
+    font-weight: 700;
+    border-width: 1px;
+    border-color: #f99a34;
+    text-shadow: 0 0 2px rgba(0,0,0,.5);
+    background-image: -webkit-linear-gradient(top,#ffc689 0,#f78e1e 100%);
+    background-image: -o-linear-gradient(top,#ffc689 0,#f78e1e 100%);
+    background-image: linear-gradient(to bottom,#ffc689 0,#f78e1e 100%);
+    background-repeat: repeat-x;
+    box-shadow: 0 0 0 2px #ffc689 inset, 0 1px 1px 0 rgba(0,0,0,.17);
+}
+</style>

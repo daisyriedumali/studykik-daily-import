@@ -1,0 +1,80 @@
+Expanded Post SignUp Questionnaire Form > LG Short Form 2 > Study Thank You Page
+!!!!CSS
+
+.radial-options {
+  width: 100% !important;
+}
+
+.radial-options label:nth-child(1), .radial-options label:nth-child(2) {
+  margin-bottom: 10px !important;
+  width: 30% !important;
+}
+
+.radial-options label input[type='radio'] {
+  margin-right: 10px;
+}
+    
+.radial-options label {
+  display: inline-block !important;
+}
+
+#questions .question {
+  text-align: left;
+}
+
+#other_gender_radio + input {
+  width: 50% !important;
+}
+
+#other_gender_radio + input::placeholder {
+  color: #7d7d7d;
+}
+
+@media (max-width: 767px) {
+    div.question:nth-child(2n) {
+        background: #f7f7f7;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px !important;
+        min-height: 125px;
+    }
+    div.question:nth-child(2n+1) {
+        background: #fff6ed;
+        padding: 10px;
+        border-radius: 5px;
+        margin-bottom: 10px !important;
+        min-height: 125px;
+    }
+    #other_gender_radio + input {
+        background: #fff6ed !important;
+    }
+    #other_gender_radio + input::placeholder {
+      color: #7d7d7d;
+    }
+    #step1 p {
+        margin-bottom: 30px !important;
+    }
+    #questions .question h3 {
+        margin: 0 0 10px 0 !important;
+    }
+}
+
+!!!!CSS
+
+!!!!Custom JS
+
+var additionalQuestionsBody = document.querySelector("#additional-questions-body");
+if(additionalQuestionsBody)
+    additionalQuestionsBody.classList.add("row");
+
+var stepQuestions = document.querySelectorAll(".step.question");
+for(var i=0; i<stepQuestions.length;i++){
+  stepQuestions[i].classList.add("col-xs-12");
+  stepQuestions[i].classList.add("col-sm-6");
+}
+
+var otherGender = document.querySelector("#other_gender_radio + input");
+if(otherGender)
+    otherGender.setAttribute("placeholder", "Please specify");
+
+!!!!Custom JS

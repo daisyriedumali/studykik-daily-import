@@ -1,0 +1,119 @@
+//USED FOR DAILY CPQ UPDATE
+COLUMN S, T
+=RIGHT(LEFT(B2, 15), 11)
+=RIGHT(LEFT(B900, 15), 11)
+
+adspent (Column U)
+=SMARTLYSPENT(D895, I895, R895, R895)
+=SMARTLYSPENT(D2, I2, R2, R2)
+
+Column V
+=PATIENTSTACKBULK(D6659, A6659, row(A6659), column(O6659))
+=PATIENTSTACKBULK2(row(A900), 100)
+
+Patient Categories (New Patient Column Y)
+=PATIENTCATEGORIESRAW(D909,A909,row(D909))
+
+Column AG
+=PATIENTCATEGORIESBULK(D5292,A5292,row(D5292), column(Y5292))
+=PATIENTCATEGORIESBULK2(row(A900), 100)
+
+
+
+//USED FOR DAILY BATCH INDICATION UPDATE
+Column W, DAILYAGGREGATEINDICATION(dailycpq_lastRow, indication, datefrom, dateto)
+=DAILYAGGREGATEINDICATION(894, A2, B2, B2)
+
+Column C, DAILYACCUMULATIONBULK(rowIndex, batch, includeCheckAcct)
+=DAILYACCUMULATIONBULK(row(A2), 50, true)
+
+
+
+
+key=API_KEY
+API_KEY = AIzaSyB6ivTpgy9du6O8um_JqNX2PqYYKRxIBI0
+
+ouath 2.0
+client id: 1014742955349-p4cs1l2mf37s4q4kr3s84h6i0l4h4udm.apps.googleusercontent.com
+client secret: sMFACWVMPsNm_9-e8WcSWEE-
+
+Study Sign Up Click CT
+Call Us Now CT
+Study Sign Up Bottom Click CT
+
+
+custom.gtm.clientNPSInsightRate
+
+<script>
+  window.dataLayer.push({
+    'custom.gtm.clientNPSInsightRate': 0
+  });
+</script>
+
+Client - NPS Insight - Rate Button Click 0
+.nps_container_notes .nps_container_notes_button:nth-child(2)
+0 -- 2
+1 -- 3
+2 -- 4
+
+.nps_container_question_feedback_form .nps_container_question_feedback_input
+.nps_container_question_feedback_form .nps_container_question_feedback_button
+
+{{Data Layer - Admin Proxy}} - {{Data Layer - Client User Name}}
+
+var json ={"mediaTracking":null,"canDeletePatient":false,"condenseTwoWeeks":false,"createdAtUtc":"2020-03-04T22:51:40.857Z","name":"Eczema Study","five9value":null,"description":"","image":"https://studykik-prod.s3.amazonaws.com/upload-study-ad/4012031-84f5201283107b7bfbf60d0fa0d70bf0","isArchived":false,"irbName":null,"irbEmail":null,"iwrs":null,"legacyAuthorID":null,"legacyPostID":null,"meta":null,"patientMessagingSuite":true,"principalInvestigator":null,"suvodaProtocolId":null,"recruitmentPhone":"+12813433300","shouldShowInSponsorPortal":false,"id":4012031,"cro_id":null,"indication_id":106,"protocol_id":10996,"site_id":460,"sponsor_id":569,"sm_user_id":null,"ae_user_id":null,"bd_user_id":8159,"site":{"name":"Center for Clinical Studies (TMC)","city":"Houston","state":"TX ","countryCode":"us","zip":"77004","address":"1401 Binz St. Ste 200 ","createdAtUtc":"2017-06-03T07:42:34.000Z","deletedAtUtc":null,"phoneNumber":"+18508425476","qbCustomerId":null,"legacyUserID":756,"timezone":"America/Chicago","id":460,"client_id":461,"isArchived":false,"twilio_number_id":1365},"campaigns":[{"startDate":"2020-03-05","endDate":"2020-04-04","length":"1","customPatientGoal":null,"legacyCampaignNum":null,"legacyCampaignId":null,"patientQualificationSuite":false,"isPointsEnrolled":false,"orderNumber":1,"isCurrent":true,"isLast":true,"central":false,"callCenterMuted":false,"id":31730,"level_id":5,"site_id":460,"study_id":4012031}]};
+
+var levels = [
+			"Bronze",         //1
+			"Silver",         //2
+			"Gold",           //3
+			"Platinum",       //4
+			"Diamond",        //5
+			"Ruby",           //6
+			"Platinum Plus",  //7
+			"Diamond Plus",   //8
+			"Ruby Plus"       //9
+		];
+var arr = [];
+var c = json.campaigns.length-1;
+
+var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+var theDate = new Date(json.campaigns[c].startDate);
+var _theStartDate = day[theDate.getUTCDay()] + ' ' + monthName[theDate.getUTCMonth()]  + ' ' + (theDate.getUTCDate() > 9 ? theDate.getUTCDate() : '0'+theDate.getUTCDate()) + ' ' + theDate.getUTCFullYear() + ' 00:00:00 GMT+0000 (Coordinated Universal Time)';
+
+theDate = new Date(json.campaigns[c].endDate);
+var _theEndDate = day[theDate.getUTCDay()] + ' ' + monthName[theDate.getUTCMonth()]  + ' ' + (theDate.getUTCDate() > 9 ? theDate.getUTCDate() : '0'+theDate.getUTCDate()) + ' ' + theDate.getUTCFullYear() + ' 00:00:00 GMT+0000 (Coordinated Universal Time)';
+
+arr.push(json.campaigns[c].id);
+arr.push(_theStartDate);
+arr.push(_theEndDate);
+arr.push(document.querySelector("form#studyInfoSection > h2 > span > a").innerText);
+arr.push(json.campaigns[c].site_id);
+arr.push(json.campaigns[c].central);
+arr.push(json.campaigns[c].patientQualificationSuite);
+arr.push(levels[json.campaigns[c].level_id - 1]);
+
+arr.push(document.querySelector(".section > li:nth-child(3) .field span.Select-value-label").textContent);
+arr.push(document.querySelector(".section > li:nth-child(4) .field span.Select-value-label").textContent);
+
+arr.push(json.site.name);
+arr.push(json.site.city);
+arr.push(json.site.state);
+arr.push(json.site.zip);
+
+console.log(json.campaigns[c].startDate);
+console.log(json.campaigns[c].endDate)
+
+var strMain = '\n';
+arr.map(function(e){ strMain+=e+"\n"});
+strMain+='\n'
+console.log(strMain);
+
+table: campaign_patient_quality_hd1
+jobID: decent-glazing-256015:US.bquxjob_3800d3d6_1705330ae3b
+campaignId:INTEGER,datefrom:STRING,dateto:STRING,study_id:INTEGER,site_id:INTEGER,central:STRING,pqs:STRING,level:STRING,indication:STRING,protocolName:STRING,siteName:STRING,city:STRING,state:STRING,zip:STRING,patients:INTEGER,prescreened:INTEGER,cnc:INTEGER,date:DATE,datefromparsed:DATE,datetoparsed:DATE,adspent:FLOAT,patients_acc:INTEGER,prescreened_acc:INTEGER,cnc_acc:INTEGER,New_Patient:INTEGER,Call_Attempted:INTEGER,DNQ:INTEGER,Action_Needed:INTEGER,Scheduled:INTEGER,Consented:INTEGER,Screen_Failed:INTEGER,Randomized:INTEGER,New_Patient_Acc:INTEGER,Call_Attempted_Acc:INTEGER,DNQ_Acc:INTEGER,Action_Needed_Acc:INTEGER,Scheduled_Acc:INTEGER,Consented_Acc:INTEGER,Screen_Failed_Acc:INTEGER,Randomized_Acc:INTEGER,newSignUp:INTEGER,sourceName:STRING,isMediaTracking:STRING,tierNumber:INTEGER,sponsor:STRING,sponsorId:INTEGER,croId:INTEGER,cro:STRING,dsp_pp:INTEGER,dispositionTotal:INTEGER,clAdspent:FLOAT,clCummTotalSpent:FLOAT,clInitialSpent:FLOAT,clRepost:INTEGER,campaignCost:FLOAT
+
+table: study_patients_by_media
+campaignID:INTEGER,studyID:INTEGER,site:INTEGER,date:DATE,media:STRING,patients:INTEGER,prescreened:INTEGER,cnc:INTEGER,patient_acc:INTEGER,prescreened_acc:INTEGER,cnc_acc:INTEGER,newsignup:INTEGER

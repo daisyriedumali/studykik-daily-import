@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Accordion</title>
+</head>
+<style type="text/css">
+/* MODAL STYLE */
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  padding-top: 5%; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 10px !important;
+  width: 80%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.modal-title {
+  padding-left: 20px;
+}
+
+/* The Close Button */
+.close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  margin-top: 10px;
+  padding-right: 20px;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.modal-dialog {
+  max-height: 80%;
+  /*overflow: auto;*/
+}
+
+.modal-header {
+  /*padding: 2px 16px;*/
+  /*position: fixed;
+  width: inherit;*/
+  border-radius: 10px 10px 0 0;
+  border-bottom: 0;
+  padding-bottom: 0;
+  margin-top: -1px;
+  background-color: #f5f5f5 !important;
+  color: white;
+}
+
+.modal-header button {
+  top: 20px !important;
+  color: #333 !important;
+}
+
+.modal-body {
+  padding: 20px 16px;
+  /*height: 80%*/
+}
+
+.modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+</style>
+
+<body>
+  <button type="button" id="myBtn" class="btn btn-info btn-lg main-modal-btn" data-toggle="modal" data-target="#myModal">
+  	<span>Open Modal</span>
+  </button>
+
+  <!-- Modal -->
+  <div class="modal" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <div class="image-content" style="text-align: center;">
+            <img src="https://res.cloudinary.com/teembr/image/upload/v1572886257/studykik/nodiscount-renewal.png" style="width: 440px; margin-top: -70px;">
+          </div>
+        </div>
+
+        <div class="modal-body">
+
+          <h3 style="text-align: center;">
+            <strong>
+              <span style="color:#666666;">Hello, your campaign will<br>
+              be <em>Ending Soon!</em></span>
+            </strong>
+          </h3>
+          
+          <div>
+            <h5 style="text-align: center;">
+              <span style="color:#888888;">Click below to Renew <em>instantly</em> and<br>
+                keep your study enrolling.</span>
+            </h5>
+          </div>
+          <div style="text-align: center; margin: 40px 0 20px 0;">
+            <div style="background-color:rgba(245, 142, 49, 1)!important;color:rgba(255, 255, 255, 1)!important;padding: 10px 15px;border-radius: 3px; font-weight: bold; width: 220px; margin: auto;">RENEW CAMPAIGN</div>
+          </div>           
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+
+
+
+<script type="text/javascript">
+//MODAL CONTROL
+var body = document.getElementsByTagName('body')[0];
+var modal = document.getElementById("myModal");
+var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+btn.onclick = function() {
+  modal.style.display = "block";
+  body.style.overflow = 'hidden';
+}
+
+if(span)
+span.onclick = function() {
+  modal.style.display = "none";
+  body.style.overflow = '';
+}
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    body.style.overflow = '';
+  }
+}
+
+
+
+
+
+
+
+//ACCORDION CONTROL
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var panel = this.nextElementSibling;
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+  });
+}
+</script>
+</body>
+</html>

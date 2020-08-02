@@ -1,0 +1,68 @@
+<div style="height: 100%; position: relative;"><div style="height: 100%; overflow: auto;" id="standard_task_description" class="protected"><div class="task-description-content task-description__TaskContentWrapper-sc-380ibo-1 iVZZWO">
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<div id="brinza-task-description">
+<p>An array A consisting of N integers is given. A pair of integers (P, Q), such that 0 ≤ P ≤ Q &lt; N, is called a <i>slice</i> of array A. A slice is described as <i>switching</i> if all values in even positions are equal and all values in odd positions are equal. More precisely, slice (P, Q) is switching if:</p>
+<blockquote><ul style="margin: 10px;padding: 0px;"><li>A[P] = A[P+2] = A[P+4] and so on, up to A[Q−1] or A[Q], and</li>
+<li>A[P+1] = A[P+3] = A[P+5] and so on, up to A[Q−1] or A[Q].</li>
+</ul>
+</blockquote><p>Note that a single-element slice is also switching.</p>
+<p>Write a function:</p>
+<blockquote><p style="font-family: monospace; font-size: 9pt; display: block; white-space: pre-wrap"><tt>function solution(A);</tt></p></blockquote>
+<p>that, given an array A consisting of N integers, returns the size of the largest switching slice in A. If there is no such slice, the function should return 0.</p>
+<p>For example, given array A such that:</p>
+<tt style="white-space:pre-wrap">  A[0] =  5
+  A[1] =  4
+  A[2] = -3
+  A[3] =  4
+  A[4] = -3
+  A[5] =  5
+  A[6] = -3
+  A[7] =  5</tt>
+<p>the function should return 4, because:</p>
+<blockquote><ul style="margin: 10px;padding: 0px;"><li>(1, 4) is a switching slice of length 4,</li>
+<li>(4, 7) is a switching slice of length 4, and</li>
+<li>all other switching slices in A are shorter.</li>
+</ul>
+</blockquote><p>Write an <b><b>efficient</b></b> algorithm for the following assumptions:</p>
+<blockquote><ul style="margin: 10px;padding: 0px;"><li>N is an integer within the range [<span class="number">0</span>..<span class="number">100,000</span>];</li>
+<li>each element of array A is an integer within the range [<span class="number">−1,000,000,000</span>..<span class="number">1,000,000,000</span>].</li>
+</ul>
+</blockquote></div>
+<div style="margin-top:5px">
+<small>Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.</small>
+</div>
+
+</div></div></div>
+
+
+-----
+
+<div style="height: 100%; position: relative;"><div style="height: 100%; overflow: auto;" id="standard_task_description" class="protected"><div class="task-description-content task-description__TaskContentWrapper-sc-380ibo-1 iVZZWO">
+
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<div id="brinza-task-description">
+<p>Alice and Bob work in a beautiful orchard. There are N apple trees in the orchard. The apple trees are arranged in a row and they are numbered from 1 to N.</p>
+<p>Alice is planning to collect all the apples from K consecutive trees and Bob is planning to collect all the apples from L consecutive trees. They want to choose two disjoint segments (one consisting of K trees for Alice and the other consisting of L trees for Bob) so as not to disturb each other. What is the maximum number of apples that they can collect?</p>
+<p>Write a function:</p>
+<blockquote><p style="font-family: monospace; font-size: 9pt; display: block; white-space: pre-wrap"><tt>function solution(A, K, L);</tt></p></blockquote>
+<p>that, given an array A consisting of N integers denoting the number of apples on each apple tree in the row, and integers K and L denoting, respectively, the number of trees that Alice and Bob can choose when collecting, returns the maximum number of apples that can be collected by them, or −1 if there are no such intervals.</p>
+<p>Since the answer can be very large, provide it modulo 1,000,000,007 (10<sup>9</sup> + 7).</p>
+<p>For example, given A = [6, 1, 4, 6, 3, 2, 7, 4], K = 3, L = 2, your function should return 24, because Alice can choose trees 3 to 5 and collect 4 + 6 + 3 = 13 apples, and Bob can choose trees 7 to 8 and collect 7 + 4 = 11 apples. Thus, they will collect 13 + 11 = 24 apples in total, and that is the maximum number that can be achieved.</p>
+<p>Given A = [10, 19, 15], K = 2, L = 2, your function should return −1, because it is not possible for Alice and Bob to choose two disjoint intervals.</p>
+<p>Write an <b><b>efficient</b></b> algorithm for the following assumptions:</p>
+<blockquote><ul style="margin: 10px;padding: 0px;"><li>N is an integer within the range [<span class="number">2</span>..<span class="number">100,000</span>];</li>
+<li>K and L are integers within the range [<span class="number">1</span>..<span class="number">N − 1</span>];</li>
+<li>each element of array A is an integer within the range [<span class="number">1</span>..<span class="number">1,000,000,000</span>].</li>
+</ul>
+</blockquote></div>
+<div style="margin-top:5px">
+<small>Copyright 2009–2019 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.</small>
+</div>
+
+</div></div></div>
+

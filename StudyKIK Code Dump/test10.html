@@ -1,0 +1,34 @@
+var title = .custom-description p:nth-child(1) span strong
+
+var subtitle = .custom-description p:nth-child(2) //delete
+
+var mainDesc = .custom-description p:nth-child(3) span
+
+var qualifyTitle1 = .custom-description p:nth-child(4) span strong
+
+//insert after this p
+
+document.querySelector(".custom-description p:nth-child(1) span strong").innerHTML = "YOU'VE TRIED ANTIDEPRESSANTS,<br>BUT YOU'RE STILL NOT YOU";
+
+document.querySelector(".custom-description p:nth-child(3) span").innerText = 'A clinical research trial is being conducted for adults with Major Depressive Disorder whose current antidepressant treatment may not be working.';
+
+document.querySelector(".custom-description p:nth-child(4) span").innerHTML = '<strong>Qualified Participants Must Be:</strong><br>- Are at least 18 years old<br>- Currently taking an antidepressants';
+
+document.querySelector(".custom-description p:nth-child(5) span").innerHTML = '<strong>Qualified Participants May Receive:</strong><br>- Compensation for time and travel<br>- Study-related care at no cost';
+
+document.querySelector(".custom-description p:nth-child(6) span").innerHTML = 'Health insurance is not required.';
+
+document.querySelector('.custom-description p:nth-child(2)').remove();
+
+---
+document.querySelector(".custom-description p:nth-child(1) span strong").innerHTML = "YOU'VE TRIED ANTIDEPRESSANTS,<br>BUT YOU'RE STILL NOT YOU";
+
+document.querySelector(".custom-description p:nth-child(3) span").innerText = 'A clinical research trial is being conducted for adults with Major Depressive Disorder whose current antidepressant treatment may not be working.';
+
+document.querySelector(".custom-description p:nth-child(4) span").innerHTML = '<strong>Qualified Participants Must Be:</strong><br>- Are at least 18 years old<br>- Currently taking an antidepressants';
+
+document.querySelector(".custom-description p:nth-child(5) span").innerHTML = '<strong>Qualified Participants May Receive:</strong><br>- Compensation for time and travel<br>- Study-related care at no cost';
+
+document.querySelector(".custom-description p:nth-child(6) span").innerHTML = 'Health insurance is not required.';
+
+document.querySelector('.custom-description p:nth-child(2)').remove();

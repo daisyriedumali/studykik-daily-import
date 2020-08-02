@@ -1,0 +1,225 @@
+let body = document.getElementsByTagName("body");
+if(body && body.length) {
+	body[0].innerHTML += '<button type="button" class="btn btn-info btn-lg main-modal-btn" data-toggle="modal" data-target="#myModal"><span>Open Modal</span></button>';
+}
+
+
+let container = document.querySelectorAll(".container");
+if(container && container.length) {
+	container[0].innerHTML += '<button type="button" id="myBtn" class="btn btn-info btn-lg main-modal-btn" data-toggle="modal" data-target="#myModal"><span>Open Modal</span></button>';
+}
+
+
+let selectMobile = document.querySelectorAll(".form-find-studies select");
+if(selectMobile && selectMobile.length >= 1) {
+	selectMobile[1].setAttribute("required", "");
+}
+
+let selectDesktop = document.querySelectorAll(".form-find-studies input");
+if(selectDesktop && selectDesktop.length >= 4) {
+	selectDesktop[2].setAttribute("required", "");
+}
+
+--
+
+color: #5a5a5a;
+padding-bottom: 7px;
+font-size: 2rem;
+
+//DESKTOP AND MOBILE
+let postalCodeField = document.querySelectorAll(".form-find-studies .field-row input");
+let postalDiv = document.createElement("div");
+postalDiv.classList = "form-field-label-header";
+postalDiv.innerHTML = 'Enter your postal code below';
+postalCodeField[0].parentNode.prepend(postalDiv);
+
+let selectFields = document.querySelectorAll(".form-find-studies .field-row .field-lg");
+let distanceDiv = document.createElement("div");
+distanceDiv.classList = "form-field-label-header";
+distanceDiv.innerHTML = 'Enter your postal code below';
+selectFields[0].parentNode.prepend(distanceDiv);
+
+let indicationDiv = document.createElement("div");
+indicationDiv.classList = "form-field-label-header";
+indicationDiv.innerHTML = 'Enter your postal code below';
+selectFields[1].parentNode.prepend(indicationDiv);
+
+
+
+
+
+//DESKTOP AND MOBILE
+let postalCodeField = document.querySelectorAll(".form-find-studies .field-row input");
+let postalDiv = document.createElement("div");
+postalDiv.classList = "form-field-label-header";
+postalDiv.innerHTML = 'Enter your postal code below <span>?</span>';
+postalCodeField[0].parentNode.prepend(postalDiv);
+
+let selectFields = document.querySelectorAll(".form-find-studies .field-row .field-lg");
+let distanceDiv = document.createElement("div");
+distanceDiv.classList = "form-field-label-header";
+distanceDiv.innerHTML = 'Enter your postal code below <span>?</span>';
+selectFields[0].parentNode.prepend(distanceDiv);
+
+let indicationDiv = document.createElement("div");
+indicationDiv.classList = "form-field-label-header";
+indicationDiv.innerHTML = 'Enter your postal code below <span>?</span>';
+selectFields[1].parentNode.prepend(indicationDiv);
+
+--
+<style>
+.tooltip2 {
+    position: relative;
+    margin-left: 10px;
+}
+  
+.tooltip2 .tooltiptext {
+    visibility: hidden;
+    text-align: left;
+    border-radius: 6px;
+    padding: 5px;
+    /* Position the tooltip */
+    position: absolute;
+    width: 160px;
+    display: table;
+    z-index: 1;
+    bottom: 20px;
+    margin-left: -350%;
+
+    box-shadow: 1px 1px 2px #aaa;
+    background-color: #eaeaea;
+    color: #354052;
+    font-size: 12px;
+}
+  
+.tooltip2:hover .tooltiptext {
+    visibility: visible;
+}
+
+.form-field-label-header {
+	margin-bottom: 7px;
+}
+
+.form-field-label-header > div {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    text-align: left;
+    border: solid 1px gray;
+}
+.form-field-label-header > div > div {
+	padding-bottom: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+</style>
+
+
+
+
+<div class="form-field-label-header">
+	Enter your postal code below
+	<div class="tooltip2">
+		<div style=>?</div>
+		<span class="tooltiptext">Here I Am!! asd</span>
+	</div>
+</div>
+
+
+
+let postalCodeField = document.querySelectorAll(".form-find-studies .field-row input");
+let postalDiv = document.createElement("div");
+postalDiv.classList = "form-field-label-header";
+postalDiv.innerHTML = 'Enter your postal code below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Postal or ZIP code is a numeric code use to identify your location in order for us to give clinical trials near you.</span></div>';
+postalCodeField[0].parentNode.prepend(postalDiv);
+
+
+let selectFields = document.querySelectorAll(".form-find-studies .field-row .field-lg");
+let distanceDiv = document.createElement("div");
+distanceDiv.classList = "form-field-label-header";
+distanceDiv.innerHTML = 'Choose locations near you<div class="tooltip2"><div style=>?</div><span class="tooltiptext">We'll filter the clinical trials based on how far it is from your location</span></div>';
+selectFields[0].parentNode.prepend(distanceDiv);
+
+
+
+let indicationDiv = document.createElement("div");
+indicationDiv.classList = "form-field-label-header";
+indicationDiv.innerHTML = 'Choose an indication below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Postal or ZIP code is a numeric code use to identify your location in order for us to give clinical trials near you.</span></div>';
+selectFields[1].parentNode.prepend(indicationDiv);
+
+-----
+Indication Page Filter Result Test:
+
+<style>
+    .filter-results-wrapper {
+        margin-top: -30px;
+        margin-bottom: 30px;
+    }
+
+    .filter-results {
+        width: 170px;
+        margin: auto;
+        text-align: center;
+        border: 1px solid #dedede;
+        border-radius: 5px;
+        padding: 3px;
+    }
+
+    .filter-results:hover {
+        cursor: pointer;
+        box-shadow: 0px 0px 0px 1px #D8DDE2 inset, 0px 1px 2px rgba(0,0,0,0.04);
+    }
+
+    .filter-show {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.2s ease-out;
+    }
+
+    .form-find-studies {
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+</style>
+
+---
+<div class="filter-results-wrapper">
+    <div class="filter-results">
+        Filter Results
+    </div>
+</div>
+---
+
+var filterResult = document.createElement("div");
+filterResult.classList = 'filter-results-wrapper';
+filterResult.innerHTML = '<div class="filter-results">Filter Results</div>';
+
+var mainHeading = document.querySelector("h2.main-heading");
+mainHeading.insertAdjacentElement("afterend", filterResult);
+
+var filterForm = document.querySelector(".form-find-studies");
+filterForm.classList.add("filter-show");
+
+document.querySelector(".filter-results").addEventListener("click", function() {
+    var panel = document.querySelector(".form-find-studies");
+    if (panel.style.maxHeight){
+      panel.style.maxHeight = null;
+    } else {
+      panel.style.maxHeight = panel.scrollHeight + "px";
+    } 
+});
+
+
+
+
+
+root folder: campaign_patient_quality
+https://drive.google.com/open?id=1_D_DeMzOwQ0MTyUJORi0o3LZ-alPaeVkkZhs4YF0LKc
+
+
+
+
+
+Daily CSV:
+https://drive.google.com/open?id=1HmsBbrT-mU-6UFdS84-Jg-n6iM3vyzCT

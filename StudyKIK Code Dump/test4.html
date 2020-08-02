@@ -1,0 +1,27 @@
+var indicationSection = document.querySelector(".form-find-studies .field-row:nth-child(3) .field-lg");
+var customWarning = document.createElement("div");
+customWarning.classList = "indication-required warning-hide";
+customWarning.innerHTML = "Please select an Indication";
+indicationSection.appendChild(customWarning);
+
+document.querySelector(".form-find-studies .field-row:nth-child(4) input").addEventListener('click', function(e){
+	var checkIndicationInput = document.querySelector(".form-find-studies .field-row:nth-child(3) input");
+	var checkPlaceholder = document.querySelector(".form-find-studies .field-row:nth-child(3) .Select-placeholder");
+	if(checkIndicationInput && checkPlaceholder) {
+		e.preventDefault();
+		document.querySelector(".form-find-studies .field-row:nth-child(3) .field-lg .indication-required").classList.remove("warning-hide");
+	} else {
+		document.querySelector(".form-find-studies .field-row:nth-child(3) .field-lg .indication-required").classList.add("warning-hide");
+	}
+});
+
+var vera = document.querySelector(".form-study .in-viewport .row div:first-child");
+vera.remove();
+
+var irb = document.querySelector(".form-study .in-viewport .row div img");
+irb.src = "https://res.cloudinary.com/teembr/image/upload/v1569349097/studykik/IRB-APPROVED-2.png";
+irb.parentNode.classList = "col-xs-12";
+
+
+width: 60%;
+margin: auto;

@@ -1,0 +1,66 @@
+let checkPostal = document.querySelector(".form-find-studies .field-row div.form-field-label-header");
+if(checkPostal == null){
+	let postalCodeField = document.querySelectorAll(".form-find-studies .field-row input");
+	let postalDiv = document.createElement("div");
+	postalDiv.classList = "form-field-label-header";
+	postalDiv.innerHTML = 'Enter your postal code below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Postal or ZIP code is a numeric code use to identify your location in order for us to give clinical trials near you.</span></div>';
+	postalCodeField[0].parentNode.prepend(postalDiv);
+} else {
+	checkPostal.innerHTML = 'Enter your postal code below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Postal or ZIP code is a numeric code use to identify your location in order for us to give clinical trials near you.</span></div>';
+}
+
+
+let checkDistance = document.querySelector(".form-find-studies .field-row:nth-child(2) div.form-field-label-header");
+if(checkDistance == null) {
+	let selectFields = document.querySelectorAll(".form-find-studies .field-row .field-lg");
+	let distanceDiv = document.createElement("div");
+	distanceDiv.classList = "form-field-label-header";
+	distanceDiv.innerHTML = "Choose locations near you<div class='tooltip2'><div style=>?</div><span class='tooltiptext'>We'll filter the clinical trials based on how far it is from your location</span></div>";
+	selectFields[0].parentNode.prepend(distanceDiv);
+} else {
+	checkDistance.innerHTML = "Choose locations near you<div class='tooltip2'><div style=>?</div><span class='tooltiptext'>We'll filter the clinical trials based on how far it is from your location</span></div>";
+}
+
+let checkIndication = document.querySelector(".form-find-studies .field-row:nth-child(3) div.form-field-label-header");
+if(checkIndication == null) {
+	let selectFields = document.querySelectorAll(".form-find-studies .field-row .field-lg");
+	let indicationDiv = document.createElement("div");
+	indicationDiv.classList = "form-field-label-header";
+	indicationDiv.innerHTML = 'Choose an indication below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Find a clinical trial from a symptom or condition that you\'re interested with.</span></div>';
+	selectFields[1].parentNode.prepend(indicationDiv);
+} else {
+	checkIndication.innerHTML = 'Choose an indication below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Find a clinical trial from a symptom or condition that you\'re interested with.</span></div>';
+}
+
+
+document.querySelectorAll('.tooltip2')[0].addEventListener("click", function() {
+    this.classList.toggle("active");
+});
+
+---
+orig:
+
+let postalCodeField = document.querySelectorAll(".form-find-studies .field-row input");
+let postalDiv = document.createElement("div");
+postalDiv.classList = "form-field-label-header";
+postalDiv.innerHTML = 'Enter your postal code below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Postal or ZIP code is a numeric code use to identify your location in order for us to give clinical trials near you.</span></div>';
+postalCodeField[0].parentNode.prepend(postalDiv);
+
+
+let selectFields = document.querySelectorAll(".form-find-studies .field-row .field-lg");
+let distanceDiv = document.createElement("div");
+distanceDiv.classList = "form-field-label-header";
+distanceDiv.innerHTML = "Choose locations near you<div class='tooltip2'><div style=>?</div><span class='tooltiptext'>We'll filter the clinical trials based on how far it is from your location</span></div>";
+selectFields[0].parentNode.prepend(distanceDiv);
+
+
+
+let indicationDiv = document.createElement("div");
+indicationDiv.classList = "form-field-label-header";
+indicationDiv.innerHTML = 'Choose an indication below<div class="tooltip2"><div style=>?</div><span class="tooltiptext">Find a clinical trial from a symptom or condition that you\'re interested with.</span></div>';
+selectFields[1].parentNode.prepend(indicationDiv);
+
+
+document.querySelectorAll('.tooltip2')[0].addEventListener("click", function() {
+    this.classList.toggle("active");
+});

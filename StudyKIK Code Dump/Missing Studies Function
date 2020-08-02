@@ -1,0 +1,54 @@
+var json ={"mediaTracking":true,"canDeletePatient":false,"condenseTwoWeeks":false,"createdAtUtc":"2019-12-05T17:00:09.231Z","name":"Personality Disorder Study","five9value":null,"description":"Central Campaign - please close this ticket (PD)","image":"https://studykik-prod.s3.amazonaws.com/upload-study-ad/4011379-6824d7f50ffa361ffd6db438d4fda536","isArchived":false,"irbName":null,"irbEmail":null,"iwrs":null,"legacyAuthorID":null,"legacyPostID":null,"meta":null,"patientMessagingSuite":true,"principalInvestigator":"Dr. Joyce","suvodaProtocolId":null,"recruitmentPhone":"+19042815757","shouldShowInSponsorPortal":true,"id":4011379,"cro_id":178,"indication_id":543,"protocol_id":11098,"site_id":1648,"sponsor_id":184,"sm_user_id":null,"ae_user_id":null,"bd_user_id":null,"site":{"name":"CNS Healthcare (Jacksonville, FL)","city":"Jacksonville","state":"FL","countryCode":"us","zip":"32256","address":"5200 Belfort Road, Suite 420","createdAtUtc":"2017-06-04T16:27:31.327Z","deletedAtUtc":null,"phoneNumber":"+18508425476","qbCustomerId":null,"legacyUserID":null,"timezone":"America/New_York","id":1648,"client_id":1564,"isArchived":false,"twilio_number_id":220},"campaigns":[{"startDate":"2019-12-06","endDate":"2020-01-05","length":"1","customPatientGoal":null,"legacyCampaignNum":null,"legacyCampaignId":null,"patientQualificationSuite":false,"isPointsEnrolled":false,"orderNumber":1,"isCurrent":false,"isLast":false,"central":true,"callCenterMuted":false,"id":30598,"level_id":5,"site_id":1648,"study_id":4011379},{"startDate":"2020-01-09","endDate":"2020-02-08","length":"1","customPatientGoal":null,"legacyCampaignNum":null,"legacyCampaignId":null,"patientQualificationSuite":false,"isPointsEnrolled":false,"orderNumber":2,"isCurrent":false,"isLast":false,"central":true,"callCenterMuted":false,"id":30914,"level_id":5,"site_id":1648,"study_id":4011379},{"startDate":"2020-07-02","endDate":"2020-08-01","length":"1","customPatientGoal":null,"legacyCampaignNum":null,"legacyCampaignId":null,"patientQualificationSuite":false,"isPointsEnrolled":false,"orderNumber":3,"isCurrent":true,"isLast":true,"central":true,"callCenterMuted":true,"id":32695,"level_id":5,"site_id":1648,"study_id":4011379}]};
+
+var levels = [
+			"Bronze",         //1
+			"Silver",         //2
+			"Gold",           //3
+			"Platinum",       //4
+			"Diamond",        //5
+			"Ruby",           //6
+			"Platinum Plus",  //7
+			"Diamond Plus",   //8
+			"Ruby Plus"       //9
+		];
+var arr = [];
+var c = json.campaigns.length-1;
+
+var day = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+var theDate = new Date(json.campaigns[c].startDate);
+var _theStartDate = day[theDate.getUTCDay()] + ' ' + monthName[theDate.getUTCMonth()]  + ' ' + (theDate.getUTCDate() > 9 ? theDate.getUTCDate() : '0'+theDate.getUTCDate()) + ' ' + theDate.getUTCFullYear() + ' 00:00:00 GMT+0000 (Coordinated Universal Time)';
+
+theDate = new Date(json.campaigns[c].endDate);
+var _theEndDate = day[theDate.getUTCDay()] + ' ' + monthName[theDate.getUTCMonth()]  + ' ' + (theDate.getUTCDate() > 9 ? theDate.getUTCDate() : '0'+theDate.getUTCDate()) + ' ' + theDate.getUTCFullYear() + ' 00:00:00 GMT+0000 (Coordinated Universal Time)';
+
+arr.push(json.campaigns[c].id);
+arr.push(_theStartDate);
+arr.push(_theEndDate);
+arr.push(document.querySelector("form#studyInfoSection > h2 > span > a").innerText);
+arr.push(json.campaigns[c].site_id);
+arr.push(json.campaigns[c].central);
+arr.push(json.campaigns[c].patientQualificationSuite);
+arr.push(levels[json.campaigns[c].level_id - 1]);
+
+arr.push(document.querySelector(".section > li:nth-child(3) .field span.Select-value-label").textContent);
+arr.push(document.querySelector(".section > li:nth-child(4) .field span.Select-value-label").textContent);
+
+arr.push(json.site.name);
+arr.push(json.site.city);
+arr.push(json.site.state);
+arr.push(json.site.zip);
+
+console.log(json.campaigns[c].startDate);
+console.log(json.campaigns[c].endDate)
+
+var strMain = '\n';
+arr.map(function(e){ strMain+=e+"\n"});
+strMain+='0\n';
+strMain+='0\n';
+strMain+='0\n';
+strMain+='date\n';
+strMain+= json.campaigns[c].startDate+ '\n';
+strMain+= json.campaigns[c].endDate +'\n';
+console.log(strMain);

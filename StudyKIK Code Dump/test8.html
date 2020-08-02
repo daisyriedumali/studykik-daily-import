@@ -1,0 +1,100 @@
+.articles-holder div .post a {
+	border-radius: 5px;
+    border: solid 1px #cccccc;
+    padding: 0;
+}
+
+.articles-holder div .post a .img-holder {
+	border: none;
+	height: 200px;
+	width: 100%;
+    padding: 0;
+    border-radius: 5px 5px 0 0;
+}
+
+.img-circle-btn {
+	margin-top: -45px;
+    position: absolute;
+    left: calc(50% - 30px);
+}
+
+.img-circle-btn img {
+	width: 60px;
+    border-radius: 80px;
+    border: white solid 5px;
+}
+
+.info.no-distance {
+	margin-bottom: 0px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-left: 0;
+    margin-right: 0px;
+    border-bottom: none;
+}
+
+.info.no-distance h4 {
+	margin-bottom: 0px;
+}
+
+.info.no-distance address {
+	padding-left: 20px;
+	margin: 0 !important;
+    font-size: 14px;
+}
+
+.info.no-distance address i {
+	top: 3px;	
+}
+
+.post .desc {
+	margin: 0 15px;
+}
+
+.post .desc .custom-description * {
+	font-size: 14px!important;
+    line-height: 20px!important;
+}
+
+.learn-more-bottom-card {
+	margin-top: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    color: #00afef;
+    font-weight: 600;
+}
+
+.learn-more-bottom-card img {
+	width: 15px;
+    margin-top: -2px;
+}
+
+.coming-soon-landing {
+	padding-bottom: 0 !important;
+	border-bottom: none !important;
+}
+.coming-soon-landing h4 {
+	padding-left: 12px;
+}
+.coming-soon-landing span {
+	height: 20px !important;
+    padding-left: 12px;
+    font-size: 14px;
+}
+
+@media screen and (max-width: 500px) {
+	.articles-holder .post {
+	    width: 100% !important;
+	}
+}
+
+var learnMoreBottom = document.createElement("div");
+learnMoreBottom.classList.add("learn-more-bottom-card");
+learnMoreBottom.innerHTML='<img src="https://res.cloudinary.com/teembr/image/upload/v1575550016/studykik/circleblue.png"/> Learn More';
+
+var cardDesc = document.querySelectorAll('.post .desc');
+
+for(var i=0; i<cardDesc.length; i++){
+  var temp = learnMoreBottom.cloneNode(true);
+  cardDesc[i].insertAdjacentElement('afterend', temp);
+}

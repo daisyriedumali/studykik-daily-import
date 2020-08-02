@@ -1,0 +1,650 @@
+/* MODAL STYLE */
+/* The Modal (background) */
+.customized-modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10000; /* Sit on top */
+  padding-top: 5%; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.customized-modal .modal-content {
+  position: relative;
+  background-color: #fefefe;
+  margin: 0;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 10px !important;
+  width: 100%;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+  from {top:-300px; opacity:0} 
+  to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+  from {top:-300px; opacity:0}
+  to {top:0; opacity:1}
+}
+
+.customized-modal .modal-title {
+  padding-left: 20px;
+}
+
+/* The Close Button */
+.customized-modal .close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background: none;
+  border: none;
+  margin-top: 10px;
+  padding-right: 20px;
+}
+
+.customized-modal .close:hover,
+.customized-modal .close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.customized-modal .modal-dialog {
+  max-height: 80%;
+  width: 500px;
+  /*overflow: auto;*/
+}
+
+.customized-modal .modal-header {
+  /*padding: 2px 16px;*/
+  /*position: fixed;
+  width: inherit;*/
+  border-radius: 10px 10px 0 0;
+  border-bottom: 0;
+  /*border-left: 1px solid #888;*/
+  padding-bottom: 0;
+  margin-top: -1px;
+  background-color: #f5f5f5 !important;
+  color: white;
+}
+
+.customized-modal .modal-header button {
+  top: 0px !important;
+  color: #333 !important;
+}
+
+.customized-modal .modal-body {
+  padding: 20px 16px;
+  /*height: 80%*/
+}
+
+.customized-modal .modal-footer {
+  padding: 2px 16px;
+  background-color: #5cb85c;
+  color: white;
+}
+
+
+<!-- Modal -->
+  <div class="modal customized-modal" id="myModal" role="dialog" data-renewalclicked="false">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" style="padding-right: 0px; margin: 10px 0 0 0;">&times;</button>
+          <div class="image-content" style="text-align: center;">
+            <img src="https://res.cloudinary.com/teembr/image/upload/v1572886257/studykik/nodiscount-renewal.png" style="width: 440px; margin-top: -70px;">
+          </div>
+        </div>
+
+        <div class="modal-body">
+
+          <h3 style="text-align: center;">
+            <strong>
+              <span style="color:#666666;">Hello, your campaign will<br>
+              be <em>Ending Soon!</em></span>
+            </strong>
+          </h3>
+          
+          <div>
+            <h5 style="text-align: center;">
+              <span style="color:#888888;">Click below to Renew <em>instantly</em> and<br>
+                keep your study enrolling.</span>
+            </h5>
+          </div>
+          <div style="text-align: center; margin: 40px 0 20px 0;">
+            <div class="renewal-campaign-btn" style="background-color:rgba(245, 142, 49, 1)!important;color:rgba(255, 255, 255, 1)!important;padding: 10px 15px;border-radius: 3px; font-weight: bold; width: 220px; margin: auto; cursor: pointer;">RENEW CAMPAIGN</div>
+          </div>           
+        </div>
+
+      </div>
+      
+    </div>
+  </div>
+
+
+#main .home-page .container-fluid NAV
+
+>>>>
+
+history.pushState = ( f => function pushState(){
+    var ret = f.apply(this, arguments);
+    window.dispatchEvent(new Event('pushstate'));
+    window.dispatchEvent(new Event('locationchange'));
+    return ret;
+})(history.pushState);
+
+history.replaceState = ( f => function replaceState(){
+    var ret = f.apply(this, arguments);
+    window.dispatchEvent(new Event('replacestate'));
+    window.dispatchEvent(new Event('locationchange'));
+    return ret;
+})(history.replaceState);
+
+window.addEventListener('popstate',()=>{
+    window.dispatchEvent(new Event('locationchange'))
+});
+
+var globalCount = 0;
+
+/////////  LISTEN TO SPA HISTORY CHANGE  /////////
+window.addEventListener('locationchange', function(){
+    console.log('window locationchange func '+globalCount);
+   window.cleanAllTimeout();
+   if(window.location.pathname == '/client/home') {
+      setTimeout(function(){
+        var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+        var singleActive = 0;
+        
+        var within3Days = new Date();
+        within3Days.setDate(within3Days.getDate()+3);
+        
+        for(var i=0; i<studyItems.length; i++){
+          var checkStatus = studyItems[i].getElementsByClassName('status');
+          var checkEndDate = studyItems[i].getElementsByClassName('end-date'); 
+          var isValidEndDate = false;
+          var isCentral = true;
+
+          if(checkEndDate.length == 1){
+              var endDate = new Date(checkEndDate[0].textContent);
+        
+              if(endDate <= within3Days) {
+                isValidEndDate = true;
+              }
+          }
+
+          if(studyItems[i].querySelector('.central-flag') && studyItems[i].querySelector('.central-flag').getAttribute('data-central') == 'false'){
+            isCentral = false;
+          }
+
+          if(checkStatus.length == 1 && checkStatus[0].textContent == 'Active' && isValidEndDate && !isCentral) {
+            singleActive++;
+            break;
+          }
+        }
+
+        if(window.location.pathname == '/client/home' && singleActive && document.querySelector('div:not(.customized-modal) > .modal-dialog') == null) {
+            console.log('locationchange open modal');
+            var body = document.getElementsByTagName('body')[0];
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            body.style.overflow = 'hidden';
+        }
+      }, 6500); //6.5 SECONDS DELAY
+   }
+   globalCount++;
+});
+
+/////////  INITIAL CONDITIN WHEN THE PAGE LOADED  /////////
+if(globalCount == 0) {
+    console.log('plain if func '+globalCount);
+    window.cleanAllTimeout();
+    setTimeout(function(){
+        var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+        if(studyItems.length > 0 && studyItems[0].querySelector('.central-flag') == null) {
+            for(var i=0; i<studyItems.length; i++){
+                var studyID = studyItems[i].querySelector('.indication>div.tooltip-element').getAttribute('data-tip');
+                checkStudyID(studyID, studyItems[i]);
+            }
+            console.log('init checking but not present.. calling checkStudy()');
+        } else {
+            console.log('init checking but already present');
+        }
+    }, 2000); //CHECK FECTH OF CENTRAL FLAG AFTER 2 SECONDS
+
+  setTimeout(function(){
+        var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+        var singleActive = 0;
+        
+        var within3Days = new Date();
+        within3Days.setDate(within3Days.getDate()+3);
+        
+        for(var i=0; i<studyItems.length; i++){
+          var checkStatus = studyItems[i].getElementsByClassName('status');
+          var checkEndDate = studyItems[i].getElementsByClassName('end-date'); 
+          var isValidEndDate = false;
+          var isCentral = true;
+
+          if(checkEndDate.length == 1){
+              var endDate = new Date(checkEndDate[0].textContent);
+        
+              if(endDate <= within3Days) {
+                isValidEndDate = true;
+              }
+          }
+
+          if(studyItems[i].querySelector('.central-flag') && studyItems[i].querySelector('.central-flag').getAttribute('data-central') == 'false'){
+            isCentral = false;
+          }
+
+          if(checkStatus.length == 1 && checkStatus[0].textContent == 'Active' && isValidEndDate && !isCentral) {
+            singleActive++;
+            break;
+          }
+        }
+
+        if(window.location.pathname == '/client/home' && singleActive  && document.querySelector('div:not(.customized-modal) > .modal-dialog') == null) {
+           console.log('init if open modal');
+           var body = document.getElementsByTagName('body')[0];
+           var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            body.style.overflow = 'hidden';
+        }
+    }, 6500); //6.5 SECONDS DELAY
+
+    globalCount++;
+}
+
+/////////
+
+document.addEventListener('click', function(e){
+  /////////  RENEWAL FORM CLOSE X BUTTON CLICKED  /////////
+  if(e.target == document.querySelector('.modal-header button.close')) {
+    var body = document.getElementsByTagName('body')[0];
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    body.style.overflow = '';
+    
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'false');    
+
+    e.preventDefault();
+    ABTastyClickTracking('Popup Close X Button Click CT', null, 504225);
+  }
+  /////////  RENEWAL FORM MODAL OVERLAY CLICKED  /////////
+  else if(e.target == document.getElementById("myModal")){
+    var body = document.getElementsByTagName('body')[0];
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    body.style.overflow = '';
+
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'false');
+  }
+  /////////  RENEWAL FORM RENEWAL CAMPAIGN BTN CLICKED  /////////
+  else if(document.querySelector('div.renewal-campaign-btn') == e.target) {
+    var body = document.getElementsByTagName('body')[0];
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    body.style.overflow = '';
+    
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'true');
+
+    e.preventDefault();
+    ABTastyClickTracking('Popup Renew Campaign Click CT', null, 504225);
+
+    var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+    var singleActive = 0;
+    var activeRow = [];
+    
+    var within3Days = new Date();
+    within3Days.setDate(within3Days.getDate()+3);
+    
+    for(var i=0; i<studyItems.length; i++){
+      var checkStatus = studyItems[i].getElementsByClassName('status');
+      var checkEndDate = studyItems[i].getElementsByClassName('end-date'); 
+      var isValidEndDate = false;
+    
+      if(checkEndDate.length == 1){
+          var endDate = new Date(checkEndDate[0].textContent);
+    
+          if(endDate <= within3Days) {
+            isValidEndDate = true;
+          }
+      }
+      if(checkStatus.length == 1 && checkStatus[0].textContent == 'Active' && isValidEndDate) {
+        activeRow.push(studyItems[i]);
+        singleActive++;
+        break;
+      }
+    }
+    
+    if(singleActive && activeRow.length) {
+        activeRow[0].querySelector("span[data-tip='Renew']").click();
+    }
+  }
+  /////////  RENEWAL FORM SUBMIT FOR RENEW CLICKED  /////////
+  else if(document.querySelector('#renew-study .form-study .card-selection + button') == e.target ||
+            document.querySelector('#renew-study .form-study .card-selection + button span') == e.target) {
+    
+    e.preventDefault();
+    if(document.querySelector('.customized-modal').getAttribute('data-renewalclicked') == 'true')
+        ABTastyClickTracking('Renew Campaign Form Submit Click CT', null, 504225);
+  }
+});
+
+/////////  LISTEN TO MUTAION ON THE DOM IF STUDY LIST WAS ALREADY POPULATED  /////////
+
+const config = { attributes: false, childList: true, subtree: true };
+const callback = function(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+        console.log(mutation);
+        if (mutation.type === 'childList' && mutation.addedNodes[0] && mutation.addedNodes[0].className == 'study-container study-item') {
+            var studyID = mutation.addedNodes[0].querySelector('.indication>div.tooltip-element').getAttribute('data-tip');
+            checkStudyID(studyID, mutation.addedNodes[0]);
+        }
+    }
+};
+const observer = new MutationObserver(callback);
+observer.observe(document.body, config);
+
+//////////  FETCH CENTRAL FLAG TO STUDYKIK API  /////////
+async function checkStudyID(studyID, studyNode) {
+    console.log('checkStudyID func '+globalCount);
+    var apiHost = location.host == 'studykik.com' ? 'api' : 'api-staging';
+    var url = 'https://'+apiHost+'.studykik.com/api/v1/studies/'+studyID+'?filter={%22include%22:[{%22relation%22:%22campaigns%22,%22scope%22:{%22order%22:%22isCurrent%20DESC%22}}]}';
+    var response = await fetch(url, {
+      headers: {
+        Authorization: window.localStorage.getItem('auth_token')
+      }
+    });
+    
+    
+    var commits = await response.json();
+    if(commits && commits.campaigns.length) {
+        var centralFlag = commits.campaigns[0].central;
+        var centralTd = document.createElement("td");
+        centralTd.classList = 'central-flag'
+        centralTd.style = 'display:none';
+        centralTd.setAttribute('data-central', centralFlag);
+    
+        if(studyNode.querySelector('.central-flag') == null)
+            studyNode.insertAdjacentElement('afterbegin', centralTd);
+    }
+} 
+
+>>> remove console logs before
+
+history.pushState = ( f => function pushState(){
+    var ret = f.apply(this, arguments);
+    window.dispatchEvent(new Event('pushstate'));
+    window.dispatchEvent(new Event('locationchange'));
+    return ret;
+})(history.pushState);
+
+history.replaceState = ( f => function replaceState(){
+    var ret = f.apply(this, arguments);
+    window.dispatchEvent(new Event('replacestate'));
+    window.dispatchEvent(new Event('locationchange'));
+    return ret;
+})(history.replaceState);
+
+window.addEventListener('popstate',()=>{
+    window.dispatchEvent(new Event('locationchange'))
+});
+
+var globalCount = 0;
+var _TimeoutCollector = [];
+/////////  LISTEN TO SPA HISTORY CHANGE  /////////
+window.addEventListener('locationchange', function(){
+    console.log('window locationchange func '+globalCount);
+   //window.cleanAllTimeout();
+   _cleanAllTimeout();
+   if(window.location.pathname == '/client/home') {
+      var locChangeTimeoutID = setTimeout(function(){
+        var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+        var singleActive = 0;
+        
+        var within3Days = new Date();
+        within3Days.setDate(within3Days.getDate()+3);
+        
+        for(var i=0; i<studyItems.length; i++){
+          var checkStatus = studyItems[i].getElementsByClassName('status');
+          var checkEndDate = studyItems[i].getElementsByClassName('end-date'); 
+          var isValidEndDate = false;
+          var isCentral = true;
+
+          if(checkEndDate.length == 1){
+              var endDate = new Date(checkEndDate[0].textContent);
+        
+              if(endDate <= within3Days) {
+                isValidEndDate = true;
+              }
+          }
+
+          if(studyItems[i].querySelector('.central-flag') && studyItems[i].querySelector('.central-flag').getAttribute('data-central') == 'false'){
+            isCentral = false;
+          }
+
+          if(checkStatus.length == 1 && checkStatus[0].textContent == 'Active' && isValidEndDate && !isCentral) {
+            singleActive++;
+            break;
+          }
+        }
+
+        if(window.location.pathname == '/client/home' && singleActive && document.querySelector('div:not(.customized-modal) > .modal-dialog') == null) {
+            console.log('locationchange open modal');
+            document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'false');
+            var body = document.getElementsByTagName('body')[0];
+            var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            body.style.overflow = 'hidden';
+        }
+      }, 6500); //6.5 SECONDS DELAY
+      _TimeoutCollector.push(locChangeTimeoutID);
+   }
+   globalCount++;
+});
+
+/////////  INITIAL CONDITIN WHEN THE PAGE LOADED  /////////
+if(globalCount == 0) {
+    console.log('plain if func '+globalCount);
+    //window.cleanAllTimeout();
+    _cleanAllTimeout();
+    var initFetchTimeout = setTimeout(function(){
+        var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+        if(studyItems.length > 0 && studyItems[0].querySelector('.central-flag') == null) {
+            for(var i=0; i<studyItems.length; i++){
+                var studyID = studyItems[i].querySelector('.indication>div.tooltip-element').getAttribute('data-tip');
+                checkStudyID(studyID, studyItems[i]);
+            }
+            console.log('init checking but not present.. calling checkStudy()');
+        } else {
+            console.log('init checking but already present');
+        }
+    }, 2000); //CHECK FECTH OF CENTRAL FLAG AFTER 2 SECONDS
+    
+    _TimeoutCollector.push(initFetchTimeout);
+    
+    var modalTimeout = setTimeout(function(){
+        var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+        var singleActive = 0;
+        
+        var within3Days = new Date();
+        within3Days.setDate(within3Days.getDate()+3);
+        
+        for(var i=0; i<studyItems.length; i++){
+          var checkStatus = studyItems[i].getElementsByClassName('status');
+          var checkEndDate = studyItems[i].getElementsByClassName('end-date'); 
+          var isValidEndDate = false;
+          var isCentral = true;
+
+          if(checkEndDate.length == 1){
+              var endDate = new Date(checkEndDate[0].textContent);
+        
+              if(endDate <= within3Days) {
+                isValidEndDate = true;
+              }
+          }
+
+          if(studyItems[i].querySelector('.central-flag') && studyItems[i].querySelector('.central-flag').getAttribute('data-central') == 'false'){
+            isCentral = false;
+          }
+
+          if(checkStatus.length == 1 && checkStatus[0].textContent == 'Active' && isValidEndDate && !isCentral) {
+            singleActive++;
+            break;
+          }
+        }
+
+        if(window.location.pathname == '/client/home' && singleActive  && document.querySelector('div:not(.customized-modal) > .modal-dialog') == null) {
+           console.log('init if open modal');
+           var body = document.getElementsByTagName('body')[0];
+           var modal = document.getElementById("myModal");
+            modal.style.display = "block";
+            body.style.overflow = 'hidden';
+        }
+    }, 6500); //6.5 SECONDS DELAY
+    _TimeoutCollector.push(modalTimeout);
+
+    globalCount++;
+}
+
+/////////
+
+document.addEventListener('click', function(e){
+  /////////  RENEWAL FORM CLOSE X BUTTON CLICKED  /////////
+  if(e.target == document.querySelector('.modal-header button.close')) {
+    var body = document.getElementsByTagName('body')[0];
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    body.style.overflow = '';
+    
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'false');    
+
+    e.preventDefault();
+    ABTastyClickTracking('Popup Close X Button Click CT', null, 504225);
+  }
+  /////////  RENEWAL FORM MODAL OVERLAY CLICKED  /////////
+  else if(e.target == document.getElementById("myModal")){
+    var body = document.getElementsByTagName('body')[0];
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    body.style.overflow = '';
+
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'false');
+  }
+  /////////  RENEWAL FORM RENEWAL CAMPAIGN BTN CLICKED  /////////
+  else if(document.querySelector('div.renewal-campaign-btn') == e.target) {
+    var body = document.getElementsByTagName('body')[0];
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+    body.style.overflow = '';
+    
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'true');
+
+    e.preventDefault();
+    ABTastyClickTracking('Popup Renew Campaign Click CT', null, 504225);
+
+    var studyItems = document.querySelectorAll(".table-holder table tbody > tr.study-item");
+    var singleActive = 0;
+    var activeRow = [];
+    
+    var within3Days = new Date();
+    within3Days.setDate(within3Days.getDate()+3);
+    
+    for(var i=0; i<studyItems.length; i++){
+      var checkStatus = studyItems[i].getElementsByClassName('status');
+      var checkEndDate = studyItems[i].getElementsByClassName('end-date'); 
+      var isValidEndDate = false;
+    
+      if(checkEndDate.length == 1){
+          var endDate = new Date(checkEndDate[0].textContent);
+    
+          if(endDate <= within3Days) {
+            isValidEndDate = true;
+          }
+      }
+      if(checkStatus.length == 1 && checkStatus[0].textContent == 'Active' && isValidEndDate) {
+        activeRow.push(studyItems[i]);
+        singleActive++;
+        break;
+      }
+    }
+    
+    if(singleActive && activeRow.length) {
+        activeRow[0].querySelector("span[data-tip='Renew']").click();
+    }
+  }
+  /////////  RENEWAL FORM SUBMIT FOR RENEW CLICKED  /////////
+  else if(document.querySelector('#renew-study .form-study .card-selection + button') == e.target ||
+            document.querySelector('#renew-study .form-study .card-selection + button span') == e.target) {
+    
+    e.preventDefault();
+    if(document.querySelector('.customized-modal').getAttribute('data-renewalclicked') == 'true')
+        ABTastyClickTracking('Renew Campaign Form Submit Click CT', null, 504225);
+
+    document.querySelector('.customized-modal').setAttribute('data-renewalclicked', 'false');
+  }
+});
+
+/////////  LISTEN TO MUTAION ON THE DOM IF STUDY LIST WAS ALREADY POPULATED  /////////
+
+const config = { attributes: false, childList: true, subtree: true };
+const callback = function(mutationsList, observer) {
+    for(let mutation of mutationsList) {
+        console.log(mutation);
+        if (mutation.type === 'childList' && mutation.addedNodes[0] && mutation.addedNodes[0].className == 'study-container study-item') {
+            var studyID = mutation.addedNodes[0].querySelector('.indication>div.tooltip-element').getAttribute('data-tip');
+            checkStudyID(studyID, mutation.addedNodes[0]);
+        }
+    }
+};
+const observer = new MutationObserver(callback);
+observer.observe(document.body, config);
+
+//////////  FETCH CENTRAL FLAG TO STUDYKIK API  /////////
+async function checkStudyID(studyID, studyNode) {
+    console.log('checkStudyID func '+globalCount);
+    var apiHost = location.host == 'studykik.com' ? 'api' : 'api-staging';
+    var url = 'https://'+apiHost+'.studykik.com/api/v1/studies/'+studyID+'?filter={%22include%22:[{%22relation%22:%22campaigns%22,%22scope%22:{%22order%22:%22isCurrent%20DESC%22}}]}';
+    var response = await fetch(url, {
+      headers: {
+        Authorization: window.localStorage.getItem('auth_token')
+      }
+    });
+    
+    
+    var commits = await response.json();
+    if(commits && commits.campaigns.length) {
+        var centralFlag = commits.campaigns[0].central;
+        var centralTd = document.createElement("td");
+        centralTd.classList = 'central-flag'
+        centralTd.style = 'display:none';
+        centralTd.setAttribute('data-central', centralFlag);
+    
+        if(studyNode.querySelector('.central-flag') == null)
+            studyNode.insertAdjacentElement('afterbegin', centralTd);
+    }
+}
+
+//////////  CLEAR ALL TIMEOUTS  /////////
+function _cleanAllTimeout() {
+    //for(var t=0;t<TimeoutCollector.length;t++)clearTimeout(TimeoutCollector[t].trigger);window.TimeoutCollector=[];
+    for(var t=0;t<_TimeoutCollector.length;t++)clearTimeout(_TimeoutCollector[t]);
+    _TimeoutCollector=[];
+};

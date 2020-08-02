@@ -1,0 +1,61 @@
+@media (max-width: 700px) {
+	.secure-badge>img {
+		width: 20em;
+		float: none;
+	}
+
+	.verasafe-cert>img {
+		width: 19em;
+		float: none;
+	}
+
+	.secure-badge, .verasafe-cert {
+		margin-bottom: 20px;
+		text-align: center;
+		vertical-align: middle;
+		display: table-cell;
+	}
+}
+
+.secure-badge>img {
+	width: 15em;
+	float: right;
+}
+---
+@media (max-width: 767px) {
+  .secure-badge>img {
+    width : 20em;
+    float : none;
+  }
+
+  .verasafe-cert>img {
+    width : 19em;
+    float : none;
+  }
+
+  .secure-badge, .verasafe-cert {
+    margin-bottom : 20px;
+    text-align : center;
+    vertical-align : middle;
+    display : table-cell;
+  }
+}
+.secure-badge>img {
+  width : 15em;
+  float : right;
+}
+
+.verasafe-cert>img {
+  width : 14em;
+}
+
+
+
+var articleElement = document.createElement('article');
+articleElement.className = "landing post";
+
+articleElement.innerHTML = "<div class='row' style='margin-bottom: 30px'><div class='col-xs-12 col-sm-6 in-viewport slideInLeft secure-badge'><img src='https://res.cloudinary.com/teembr/image/upload/v1562688119/studykik/secure-website.png'></div><div class='col-xs-12 col-sm-6 pull-right in-viewport slideInRight verasafe-cert'><img src='https://ab-testing.s3.amazonaws.com/SecurSafe/VeraSafe+(1).png'></div></div>";
+
+var parentElement = document.querySelector("#main > .container");
+parentElement.insertBefore(articleElement, parentElement.childNodes[1]);
+
